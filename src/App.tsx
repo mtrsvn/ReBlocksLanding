@@ -1,8 +1,30 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './App.css'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [diaryDropdownOpen, setDiaryDropdownOpen] = useState(false)
+  const [mobileDiaryOpen, setMobileDiaryOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDiaryDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
+  const buildDiaries = [
+    { label: 'Update #1', url: 'https://x.com/gubsiclez/status/2057131970766016535?s=20', desc: 'Concept, L2 remittance problem, and Morph integration' },
+    { label: 'Update #2', url: 'https://x.com/gubsiclez/status/2057517699413254325?s=20', desc: 'Designing the recipient and sender mobile experiences' },
+    { label: 'Update #3', url: 'https://x.com/gubsiclez/status/2057884201450709293?s=20', desc: 'Smart contract backend and Morph Network bridging' },
+    { label: 'Update #4', url: 'https://x.com/gubsiclez/status/2060018033184378886?s=20', desc: 'Interactive Appetize demo & testnet beta launch' }
+  ]
 
   return (
     <>
@@ -15,6 +37,39 @@ function App() {
           <a href="https://canva.link/xll4nm7mq0mobil" target="_blank" rel="noopener noreferrer" className="nav-link">Canva</a>
           <a href="https://github.com/mtrsvn/ReBlocks" target="_blank" rel="noopener noreferrer" className="nav-link">GitHub</a>
           <a href="https://imgur.com/a/zOPh0tT" target="_blank" rel="noopener noreferrer" className="nav-link">Architecture</a>
+          
+          {/* Build Diaries Dropdown */}
+          <div className="nav-dropdown-wrapper" ref={dropdownRef}>
+            <button 
+              className={`nav-link dropdown-toggle-btn ${diaryDropdownOpen ? 'active' : ''}`}
+              onClick={() => setDiaryDropdownOpen(!diaryDropdownOpen)}
+              aria-haspopup="true"
+              aria-expanded={diaryDropdownOpen}
+            >
+              Build Diaries
+              <svg className={`chevron-icon ${diaryDropdownOpen ? 'open' : ''}`} width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            {diaryDropdownOpen && (
+              <div className="nav-dropdown-menu">
+                {buildDiaries.map((diary, index) => (
+                  <a 
+                    key={index} 
+                    href={diary.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="dropdown-item"
+                    onClick={() => setDiaryDropdownOpen(false)}
+                  >
+                    <span className="dropdown-item-title">{diary.label}</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <a href="https://x.com/gubsiclez/status/2058208780131999981?s=20" target="_blank" rel="noopener noreferrer" className="nav-link">Video Demo</a>
         </nav>
 
         {/* Hamburger Button */}
@@ -33,6 +88,35 @@ function App() {
           <a href="https://canva.link/xll4nm7mq0mobil" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Canva</a>
           <a href="https://github.com/mtrsvn/ReBlocks" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>GitHub</a>
           <a href="https://imgur.com/a/zOPh0tT" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Architecture</a>
+          
+          {/* Mobile Build Diaries Accordion */}
+          <div className="mobile-accordion-wrapper">
+            <button 
+              className={`mobile-nav-link mobile-dropdown-btn ${mobileDiaryOpen ? 'active' : ''}`} 
+              onClick={() => setMobileDiaryOpen(!mobileDiaryOpen)}
+            >
+              <span>Build Diaries</span>
+              <svg className={`chevron-icon ${mobileDiaryOpen ? 'open' : ''}`} width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <div className={`mobile-submenu ${mobileDiaryOpen ? 'open' : ''}`}>
+              {buildDiaries.map((diary, index) => (
+                <a 
+                  key={index} 
+                  href={diary.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="mobile-submenu-link" 
+                  onClick={() => { setMenuOpen(false); setMobileDiaryOpen(false); }}
+                >
+                  <div className="mobile-submenu-title">{diary.label}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <a href="https://x.com/gubsiclez/status/2058208780131999981?s=20" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Video Demo</a>
         </div>
       </header>
 
