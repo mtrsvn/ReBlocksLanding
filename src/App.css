@@ -431,48 +431,40 @@ body {
   display: none;
 }
 
-/* Demo Button */
-.btn-demo {
+/* Buttons Styles */
+.btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: var(--gradient);
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   height: 52px;
-  width: 165px;
-  padding: 0 20px;
+  width: 200px;
   font-size: 15px;
   font-weight: 600;
   font-family: var(--font);
   cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(86, 179, 132, 0.2);
 }
 
-/* Store Badges */
-.badge-link {
-  display: block;
-}
-.badge-link.disabled-link {
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.store-badge {
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--green-1);
+  border: 2px solid var(--green-1);
+  border-radius: 12px;
   height: 52px;
-  width: 165px;
-  object-fit: contain;
-  object-position: center;
-  border-radius: 10px;
-  display: block;
-}
-
-.disabled-badge {
-  filter: grayscale(100%) opacity(0.4);
-}
-
-.store-badge-lg {
-  height: 54px;
+  width: 200px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  text-decoration: none;
 }
 
 /* ─── PHONE SCREENSHOTS ──────────────────────────────────── */

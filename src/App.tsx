@@ -135,29 +135,22 @@ function App() {
           {/* Desktop Actions */}
           <div className="hero-actions hero-actions-desktop">
             <a
+              href="https://expo.dev/artifacts/eas/g7qrxXKsgEG72B9dUwPSC2.apk"
+              className="btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download APK
+            </a>
+
+            <a
               id="launch-demo-btn"
-              className="btn-demo"
+              className="btn-secondary"
               href="https://appetize.io/app/b_a65ph5pcwylwyaz6hvfmn3ffby"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ textDecoration: 'none' }}
             >
               Launch Demo
-            </a>
-
-            <a href="#" id="appstore-link" className="badge-link disabled-link" aria-label="Download on the App Store">
-              <img
-                src="/Download_on_the_App_Store_Badge.svg.png"
-                alt="Download on the App Store"
-                className="store-badge disabled-badge"
-              />
-            </a>
-            <a href="#" id="googleplay-link" className="badge-link disabled-link" aria-label="Get it on Google Play">
-              <img
-                src="/Google_Play_Store_badge_EN.svg.png"
-                alt="Get it on Google Play"
-                className="store-badge disabled-badge"
-              />
             </a>
           </div>
         </div>
@@ -183,29 +176,22 @@ function App() {
         {/* Mobile Actions - Rendered below phones on mobile */}
         <div className="hero-actions hero-actions-mobile">
           <a
+            href="https://expo.dev/artifacts/eas/g7qrxXKsgEG72B9dUwPSC2.apk"
+            className="btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download APK
+          </a>
+
+          <a
             id="launch-demo-btn-mobile"
-            className="btn-demo"
+            className="btn-secondary"
             href="https://appetize.io/app/b_a65ph5pcwylwyaz6hvfmn3ffby"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ textDecoration: 'none' }}
           >
             Launch Demo
-          </a>
-
-          <a href="#" id="appstore-link-mobile" className="badge-link disabled-link" aria-label="Download on the App Store">
-            <img
-              src="/Download_on_the_App_Store_Badge.svg.png"
-              alt="Download on the App Store"
-              className="store-badge disabled-badge"
-            />
-          </a>
-          <a href="#" id="googleplay-link-mobile" className="badge-link disabled-link" aria-label="Get it on Google Play">
-            <img
-              src="/Google_Play_Store_badge_EN.svg.png"
-              alt="Get it on Google Play"
-              className="store-badge disabled-badge"
-            />
           </a>
         </div>
       </section>
