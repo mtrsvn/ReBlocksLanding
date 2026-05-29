@@ -15,8 +15,8 @@ function App() {
   const tourSteps = [
     {
       title: "Seamless Login",
-      badge: "WEB3 ABSTRACTED",
-      subtitle: "No Seed Phrases or Gas Needed",
+      badge: "FRICTIONLESS ACCESS",
+      subtitle: "Quick & Easy Account Setup",
       description: "Sign up using a familiar email and password interface. Under the hood, ReBlocks secures your account instantly without forcing you to manage private keys or crypto wallets.",
       keywords: ["Email & Password", "Simple Setup", "Secure Access"],
       images: [
@@ -61,7 +61,7 @@ function App() {
     },
     {
       title: "Instant Transfers",
-      badge: "MORPH L2 SETTLEMENT",
+      badge: "INSTANT SETTLEMENT",
       subtitle: "Smart Contract Verification & Settlement",
       description: "Local funds are on-ramped to stablecoins and securely locked by our smart contract. Upon verification, funds are released to local off-ramps for payout, emitting real-time L2 events and a verifiable Tx Hash.",
       keywords: ["Regional E-Wallets", "Server-Side Routing", "On-Chain Verification"],
@@ -400,6 +400,7 @@ function App() {
       </section>
 
 
+
       {/* CTA SECTION */}
       <section id="cta">
         <div className="cta-content">
@@ -428,7 +429,7 @@ function App() {
               Launch Simulator
             </a>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4px' }}>
             <button 
               className="run-locally-btn" 
               onClick={() => setLocalModalOpen(true)}

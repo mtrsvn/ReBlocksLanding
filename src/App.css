@@ -28,7 +28,7 @@ body {
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 #root {
@@ -489,7 +489,7 @@ body {
   width: 100%;
   height: auto;
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.2));
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
@@ -1233,8 +1233,11 @@ body {
   flex-direction: column;
   gap: 24px;
   align-items: center;
+  position: -webkit-sticky;
   position: sticky;
   top: 100px;
+  align-self: flex-start;
+  height: max-content;
 }
 
 .tour-viewer-container {
@@ -1282,7 +1285,6 @@ body {
   height: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
 }
 
 .tour-chevron {
