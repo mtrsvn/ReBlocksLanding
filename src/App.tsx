@@ -137,7 +137,7 @@ function App() {
             <a
               id="launch-demo-btn"
               className="btn-demo"
-              href="https://appetize.io/app/b_wopxyn4juesahuodtxhoxvlb4m"
+              href="https://appetize.io/app/b_a65ph5pcwylwyaz6hvfmn3ffby"
               target="_blank"
               rel="noopener noreferrer"
               style={{ textDecoration: 'none' }}
@@ -185,7 +185,7 @@ function App() {
           <a
             id="launch-demo-btn-mobile"
             className="btn-demo"
-            href="https://appetize.io/app/b_wopxyn4juesahuodtxhoxvlb4m"
+            href="https://appetize.io/app/b_a65ph5pcwylwyaz6hvfmn3ffby"
             target="_blank"
             rel="noopener noreferrer"
             style={{ textDecoration: 'none' }}
