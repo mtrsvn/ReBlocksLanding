@@ -222,8 +222,7 @@ function App() {
       <section id="hero">
         <div className="hero-content">
           <h1 className="hero-title">
-            <span className="gradient-text">Faster, Cheaper</span><br />
-            Remittance.
+            <span className="gradient-text">Faster, Cheaper</span> Remittance.
           </h1>
 
           <p className="hero-subtitle text-content" style={{ fontSize: '18px', maxWidth: '520px', lineHeight: '1.6' }}>
