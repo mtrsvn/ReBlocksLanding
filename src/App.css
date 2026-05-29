@@ -395,7 +395,6 @@ h1, h2, h3, h4, h5, h6,
   line-height: 1;
   color: #2b2b2b;
   margin-bottom: 32px;
-  white-space: nowrap;
 }
 
 .gradient-text {
@@ -1106,14 +1105,18 @@ h1, h2, h3, h4, h5, h6,
 
 .tour-section-title {
   font-family: 'Fredoka', var(--font);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(48px, 6vw, 76px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1;
   color: #2b2b2b;
-  line-height: 1.2;
+  margin-bottom: 32px;
+  white-space: nowrap;
 }
 
 .tour-section-desc {
-  font-size: 16px;
-  color: var(--text-muted);
+  font-size: 18px;
+  color: var(--text);
   line-height: 1.6;
 }
 
