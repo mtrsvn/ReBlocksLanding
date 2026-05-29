@@ -165,7 +165,7 @@ function App() {
           </div>
 
           <button className="run-locally-btn" onClick={() => setLocalModalOpen(true)}>
-            How to run app locally?
+            How to run the app locally?
           </button>
         </div>
 
@@ -209,7 +209,7 @@ function App() {
           </a>
 
           <button className="run-locally-btn" onClick={() => setLocalModalOpen(true)}>
-            How to run app locally?
+            How to run the app locally?
           </button>
         </div>
       </section>
