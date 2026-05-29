@@ -1053,3 +1053,573 @@ body {
   border-color: var(--green-1);
 }
 
+/* ─── INTERACTIVE APP TOUR ──────────────────────────────── */
+#app-tour {
+  padding: 100px 48px;
+  background: linear-gradient(180deg, #f7f7f6 0%, #ffffff 50%, #f7f7f6 100%);
+  position: relative;
+}
+
+.tour-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.tour-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tour-badge {
+  display: inline-block;
+  align-self: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green-1);
+  letter-spacing: 2px;
+  background: var(--gradient-soft);
+  padding: 6px 16px;
+  border-radius: 100px;
+}
+
+.tour-section-title {
+  font-family: 'Fredoka', var(--font);
+  font-size: clamp(32px, 4vw, 48px);
+  color: #2b2b2b;
+  line-height: 1.2;
+}
+
+.tour-section-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.tour-showcase-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* Steps list */
+.tour-steps-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tour-step-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 24px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.tour-step-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(86, 179, 132, 0.3);
+  box-shadow: var(--shadow-sm);
+}
+
+.tour-step-card.active {
+  border-color: rgba(86, 179, 132, 0.6);
+  box-shadow: 0 8px 24px rgba(86, 179, 132, 0.12);
+  background: linear-gradient(135deg, rgba(86, 179, 132, 0.04) 0%, rgba(255, 255, 255, 1) 100%);
+  transform: scale(1.02);
+}
+
+.step-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.step-number-pill {
+  font-family: 'Fredoka', var(--font);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--green-1);
+  background: var(--gradient-soft);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.step-badge-mini {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.step-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b2b2b;
+  margin-bottom: 6px;
+  transition: color 0.2s ease;
+}
+
+.tour-step-card.active .step-card-title {
+  color: var(--green-2);
+}
+
+.step-card-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Expanded Card Details */
+.step-card-details {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+  animation: slideDownIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideDownIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-detail-desc {
+  font-size: 14px;
+  color: #4b4b4b;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.step-keywords-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keyword-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green-2);
+  background: rgba(86, 179, 132, 0.08);
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(86, 179, 132, 0.15);
+}
+
+/* Screenshot viewer */
+.tour-viewer-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  position: sticky;
+  top: 100px;
+}
+
+.tour-viewer-container {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tour-viewer-frame {
+  position: relative;
+  width: calc(100% + 120px);
+  margin: -60px;
+  overflow: hidden;
+}
+
+.tour-carousel-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+  align-items: center;
+}
+
+.tour-carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 60px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  opacity: 0.3;
+  transform: scale(0.95);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.tour-carousel-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tour-active-screenshot {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+}
+
+.tour-chevron {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a2e;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tour-chevron:hover:not(:disabled) {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 24px rgba(86, 179, 132, 0.25);
+  color: #56B384;
+}
+
+.tour-chevron:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.left-chevron {
+  left: -50px;
+}
+
+.right-chevron {
+  right: -50px;
+}
+
+/* Pagination Progress Control */
+.tour-pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.pagination-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.pagination-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pagination-dot-btn {
+  background: rgba(0,0,0,0.06);
+  border: 1px solid var(--border);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-dot-btn:hover {
+  background: rgba(86, 179, 132, 0.1);
+  border-color: var(--green-1);
+}
+
+.pagination-dot-btn.active {
+  background: var(--gradient);
+  border-color: var(--green-2);
+}
+
+.dot-index {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.pagination-dot-btn.active .dot-index {
+  color: #fff;
+}
+
+/* ─── TECHNICAL ARCHITECTURE ────────────────────────────── */
+#technical-architecture {
+  padding: 100px 48px;
+  background: #0d0d0f;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+#technical-architecture::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -20%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(86, 179, 132, 0.08) 0%, transparent 75%);
+  pointer-events: none;
+}
+
+.arch-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.arch-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.arch-badge {
+  display: inline-block;
+  align-self: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green-1);
+  letter-spacing: 2px;
+  background: rgba(86, 179, 132, 0.12);
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(86, 179, 132, 0.2);
+}
+
+.arch-section-title {
+  font-family: 'Fredoka', var(--font);
+  font-size: clamp(32px, 4vw, 48px);
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.arch-section-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.arch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.arch-visual-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.card-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(86,179,132,0.05) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.visual-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.visual-card-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+}
+
+.visual-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.metric-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+}
+
+.metric-num {
+  font-family: 'Fredoka', var(--font);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--green-1);
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.arch-action-row {
+  margin-top: 12px;
+}
+
+.btn-arch-link {
+  color: var(--green-1);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  transition: opacity 0.2s ease;
+  display: inline-block;
+}
+
+.btn-arch-link:hover {
+  opacity: 0.8;
+}
+
+.arch-details-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.details-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.tech-spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.tech-spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 20px;
+}
+
+.tech-spec-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.spec-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+.spec-value {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ─── RESPONSIVE UPGRADES ──────────────────────────────── */
+@media (max-width: 1024px) {
+  .tour-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .tour-viewer-panel {
+    order: -1;
+    position: relative;
+    top: 0;
+  }
+
+  .arch-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  #app-tour {
+    padding: 60px 24px;
+  }
+  
+  .tour-container {
+    gap: 40px;
+  }
+
+  #technical-architecture {
+    padding: 60px 24px;
+  }
+
+  .arch-visual-card, .arch-details-card {
+    padding: 24px;
+  }
+
+  .visual-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+

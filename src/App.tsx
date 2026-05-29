@@ -9,6 +9,82 @@ function App() {
   const [copiedText, setCopiedText] = useState<string | null>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
+  const [activeStep, setActiveStep] = useState(0)
+  const [activeSubImage, setActiveSubImage] = useState(0)
+
+  const tourSteps = [
+    {
+      title: "Seamless Login",
+      badge: "WEB3 ABSTRACTED",
+      subtitle: "No Seed Phrases or Gas Needed",
+      description: "Sign up using a familiar email and password interface. Under the hood, ReBlocks secures your account instantly without forcing you to manage private keys or crypto wallets.",
+      keywords: ["Email & Password", "Simple Setup", "Secure Access"],
+      images: [
+        "/screenshots/login-portrait.png",
+        "/screenshots/create account auth.png",
+        "/screenshots/verify email auth.png",
+        "/screenshots/pin auth.png"
+      ]
+    },
+    {
+      title: "Secure Profile",
+      badge: "BANK-GRADE SECURITY",
+      subtitle: "Compliant & Trusted Verification",
+      description: "Fast identity verification to ensure regulatory compliance and account safety. Unlocks full transaction limits for cross-border remittances within minutes.",
+      keywords: ["Identity Protection", "Regulatory Compliance", "Secure Limits"],
+      images: [
+        "/screenshots/profile page unverified kyc.png"
+      ]
+    },
+    {
+      title: "x402 AI Agent",
+      badge: "AGENTIC PAYMENTS",
+      subtitle: "Effortless Conversational Payments",
+      description: "Turn complex cross-border transfers into a simple conversation. Just tell our AI who to pay, and it handles the live FX rates, L2 routing, and local payout instantly.",
+      keywords: ["Natural Language", "Real-Time FX", "Smart Routing"],
+      images: [
+        "/screenshots/ai assistant.png"
+      ]
+    },
+    {
+      title: "Premium Dashboard",
+      badge: "INTUITIVE UX",
+      subtitle: "Familiar Banking Experience",
+      description: "Looks and feels like a modern financial app. Manage local payout recipients, view balances, and track your transparent on-chain transaction history with zero friction.",
+      keywords: ["Local Payouts", "Clean UI", "Address Book"],
+      images: [
+        "/screenshots/home page.png",
+        "/screenshots/recipients page.png",
+        "/screenshots/history page.png",
+        "/screenshots/profile page.png"
+      ]
+    },
+    {
+      title: "Instant Transfers",
+      badge: "MORPH L2 SETTLEMENT",
+      subtitle: "Smart Contract Verification & Settlement",
+      description: "Local funds are on-ramped to stablecoins and securely locked by our smart contract. Upon verification, funds are released to local off-ramps for payout, emitting real-time L2 events and a verifiable Tx Hash.",
+      keywords: ["Regional E-Wallets", "Server-Side Routing", "On-Chain Verification"],
+      images: [
+        "/screenshots/step 1 sending.png",
+        "/screenshots/step1 sending-newrecepient.png",
+        "/screenshots/step 1 sending-qr.png",
+        "/screenshots/step 2.png",
+        "/screenshots/step 3.png",
+        "/screenshots/step3 payment method.png",
+        "/screenshots/step3 convert.png",
+        "/screenshots/step3confirm payment.png",
+        "/screenshots/step4 done.png",
+        "/screenshots/transactionhash.png"
+      ]
+    }
+  ]
+
+  const handleStepChange = (index: number) => {
+    setActiveStep(index)
+    setActiveSubImage(0)
+  }
+
   const handleCopy = (text: string, id: string) => {
     navigator.clipboard.writeText(text)
     setCopiedText(id)
@@ -219,6 +295,148 @@ function App() {
           >
             Launch Simulator
           </a>
+        </div>
+      </section>
+
+      {/* APP TOUR SECTION */}
+      <section id="app-tour">
+        <div className="tour-container">
+          <div className="tour-header">
+            <h2 className="tour-section-title">
+              See How <span className="gradient-text">ReBlocks</span> Works
+            </h2>
+            <p className="tour-section-desc">
+              Take a walk through our gasless, instant L2 cross-border remittance protocol. Click through the technical breakthroughs below to see how our x402 AI Agent and Morph architecture make sending money home as easy as sending a text.
+            </p>
+          </div>
+
+          <div className="tour-showcase-grid">
+            {/* Tour Steps Tabs */}
+            <div className="tour-steps-tabs">
+              {tourSteps.map((step, idx) => (
+                <button
+                  key={idx}
+                  className={`tour-step-card ${activeStep === idx ? 'active' : ''}`}
+                  onClick={() => handleStepChange(idx)}
+                >
+                  <div className="step-card-header">
+                    <span className="step-number-pill">0{idx + 1}</span>
+                    <span className="step-badge-mini">{step.badge}</span>
+                  </div>
+                  <h3 className="step-card-title">{step.title}</h3>
+                  <p className="step-card-subtitle">{step.subtitle}</p>
+                  
+                  {activeStep === idx && (
+                    <div className="step-card-details">
+                      <p className="step-detail-desc">{step.description}</p>
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+
+            <div className="tour-viewer-panel">
+              <div className="tour-viewer-container">
+                {tourSteps[activeStep].images.length > 1 && (
+                  <>
+                    <button
+                      className="tour-chevron left-chevron"
+                      onClick={() => setActiveSubImage(Math.max(0, activeSubImage - 1))}
+                      disabled={activeSubImage === 0}
+                      aria-label="Previous screenshot"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button
+                      className="tour-chevron right-chevron"
+                      onClick={() => setActiveSubImage(Math.min(tourSteps[activeStep].images.length - 1, activeSubImage + 1))}
+                      disabled={activeSubImage === tourSteps[activeStep].images.length - 1}
+                      aria-label="Next screenshot"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                  </>
+                )}
+                
+                <div className="tour-viewer-frame">
+                  <div 
+                    className="tour-carousel-track" 
+                    style={{ transform: `translateX(-${activeSubImage * 100}%)` }}
+                  >
+                    {tourSteps[activeStep].images.map((img, idx) => (
+                      <div key={idx} className={`tour-carousel-slide ${idx === activeSubImage ? 'active' : ''}`}>
+                        <img
+                          src={img}
+                          alt={`${tourSteps[activeStep].title} - Screen ${idx + 1}`}
+                          className="tour-active-screenshot"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Sub-image Pagination Controls */}
+              {tourSteps[activeStep].images.length > 1 && (
+                <div className="tour-pagination">
+                  <span className="pagination-label">Step Flow Progress:</span>
+                  <div className="pagination-dots">
+                    {tourSteps[activeStep].images.map((_, imgIdx) => (
+                      <button
+                        key={imgIdx}
+                        className={`pagination-dot-btn ${activeSubImage === imgIdx ? 'active' : ''}`}
+                        onClick={() => setActiveSubImage(imgIdx)}
+                        aria-label={`Go to screenshot ${imgIdx + 1}`}
+                      >
+                        <span className="dot-index">{imgIdx + 1}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* CTA SECTION */}
+      <section id="cta">
+        <div className="cta-content">
+          <h2 className="cta-title">Send Money Instantly</h2>
+          <p className="cta-subtitle">
+            Experience the fastest, cheapest way to send money home. Try the live interactive demo or download the app today.
+          </p>
+          <div className="cta-badges">
+            <a
+              href="https://expo.dev/artifacts/eas/4bUh4PB8gp17tgFwH2k2yX.apk"
+              className="btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ background: '#fff', color: '#45936d', boxShadow: 'none' }}
+            >
+              Download APK
+            </a>
+
+            <a
+              className="btn-primary"
+              href="https://appetize.io/app/b_nxax2eojumzt4fv2gyf54fc6n4"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ background: '#fff', color: '#45936d', boxShadow: 'none' }}
+            >
+              Launch Simulator
+            </a>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '24px' }}>
+            <button 
+              className="run-locally-btn" 
+              onClick={() => setLocalModalOpen(true)}
+              style={{ color: '#fff', textDecorationColor: 'rgba(255,255,255,0.5)' }}
+            >
+              How to Run the App Locally
+            </button>
+          </div>
         </div>
       </section>
 
