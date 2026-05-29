@@ -135,7 +135,7 @@ function App() {
           {/* Desktop Actions */}
           <div className="hero-actions hero-actions-desktop">
             <a
-              href="https://expo.dev/artifacts/eas/g7qrxXKsgEG72B9dUwPSC2.apk"
+              href="https://expo.dev/artifacts/eas/4bUh4PB8gp17tgFwH2k2yX.apk"
               className="btn-primary"
               target="_blank"
               rel="noopener noreferrer"
@@ -146,7 +146,7 @@ function App() {
             <a
               id="launch-demo-btn"
               className="btn-secondary"
-              href="https://appetize.io/app/b_a65ph5pcwylwyaz6hvfmn3ffby"
+              href="https://appetize.io/app/b_nxax2eojumzt4fv2gyf54fc6n4"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -176,7 +176,7 @@ function App() {
         {/* Mobile Actions - Rendered below phones on mobile */}
         <div className="hero-actions hero-actions-mobile">
           <a
-            href="https://expo.dev/artifacts/eas/g7qrxXKsgEG72B9dUwPSC2.apk"
+            href="https://expo.dev/artifacts/eas/4bUh4PB8gp17tgFwH2k2yX.apk"
             className="btn-primary"
             target="_blank"
             rel="noopener noreferrer"
@@ -187,7 +187,7 @@ function App() {
           <a
             id="launch-demo-btn-mobile"
             className="btn-secondary"
-            href="https://appetize.io/app/b_a65ph5pcwylwyaz6hvfmn3ffby"
+            href="https://appetize.io/app/b_nxax2eojumzt4fv2gyf54fc6n4"
             target="_blank"
             rel="noopener noreferrer"
           >
