@@ -1603,11 +1603,42 @@ body {
 
 @media (max-width: 768px) {
   #app-tour {
-    padding: 60px 24px;
+    padding: 60px 16px;
   }
   
   .tour-container {
     gap: 40px;
+  }
+
+  .tour-viewer-container {
+    max-width: 250px;
+  }
+
+  .tour-viewer-frame {
+    width: calc(100% + 60px);
+    margin: -30px;
+  }
+
+  .tour-carousel-slide {
+    padding: 30px;
+  }
+
+  .tour-chevron {
+    width: 36px;
+    height: 36px;
+  }
+
+  .tour-chevron svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .left-chevron {
+    left: -15px;
+  }
+
+  .right-chevron {
+    right: -15px;
   }
 
   #technical-architecture {
