@@ -56,9 +56,8 @@ function App() {
         
         {/* Desktop Nav */}
         <nav className="header-nav desktop-nav">
-          <a href="https://canva.link/xll4nm7mq0mobil" target="_blank" rel="noopener noreferrer" className="nav-link">Canva</a>
-          <a href="https://github.com/mtrsvn/ReBlocks" target="_blank" rel="noopener noreferrer" className="nav-link">GitHub</a>
-          <a href="https://imgur.com/a/zOPh0tT" target="_blank" rel="noopener noreferrer" className="nav-link">Architecture</a>
+          <a href="https://canva.link/xll4nm7mq0mobil" target="_blank" rel="noopener noreferrer" className="nav-link">Pitch</a>
+          <a href="https://x.com/gubsiclez/status/2058208780131999981?s=20" target="_blank" rel="noopener noreferrer" className="nav-link">Video Demo</a>
           
           {/* Build Diaries Dropdown */}
           <div className="nav-dropdown-wrapper" ref={dropdownRef}>
@@ -91,7 +90,8 @@ function App() {
             )}
           </div>
 
-          <a href="https://x.com/gubsiclez/status/2058208780131999981?s=20" target="_blank" rel="noopener noreferrer" className="nav-link">Video Demo</a>
+          <a href="https://imgur.com/a/zOPh0tT" target="_blank" rel="noopener noreferrer" className="nav-link">Architecture</a>
+          <a href="https://github.com/mtrsvn/ReBlocks" target="_blank" rel="noopener noreferrer" className="nav-link">GitHub</a>
         </nav>
 
         {/* Hamburger Button */}
@@ -107,9 +107,8 @@ function App() {
 
         {/* Mobile Navigation Dropdown */}
         <div className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
-          <a href="https://canva.link/xll4nm7mq0mobil" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Canva</a>
-          <a href="https://github.com/mtrsvn/ReBlocks" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>GitHub</a>
-          <a href="https://imgur.com/a/zOPh0tT" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Architecture</a>
+          <a href="https://canva.link/xll4nm7mq0mobil" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Pitch</a>
+          <a href="https://x.com/gubsiclez/status/2058208780131999981?s=20" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Video Demo</a>
           
           {/* Mobile Build Diaries Accordion */}
           <div className="mobile-accordion-wrapper">
@@ -138,7 +137,8 @@ function App() {
             </div>
           </div>
 
-          <a href="https://x.com/gubsiclez/status/2058208780131999981?s=20" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Video Demo</a>
+          <a href="https://imgur.com/a/zOPh0tT" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Architecture</a>
+          <a href="https://github.com/mtrsvn/ReBlocks" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>GitHub</a>
         </div>
       </header>
 
@@ -172,7 +172,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Launch Demo
+              Launch Simulator
             </a>
           </div>
 
@@ -217,7 +217,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Launch Demo
+            Launch Simulator
           </a>
         </div>
       </section>
