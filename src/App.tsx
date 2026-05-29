@@ -29,6 +29,18 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setLocalModalOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   const buildDiaries = [
     { label: 'Update #1', url: 'https://x.com/gubsiclez/status/2057131970766016535?s=20', desc: 'Concept, L2 remittance problem, and Morph integration' },
     { label: 'Update #2', url: 'https://x.com/gubsiclez/status/2057517699413254325?s=20', desc: 'Designing the recipient and sender mobile experiences' },
@@ -165,7 +177,7 @@ function App() {
           </div>
 
           <button className="run-locally-btn" onClick={() => setLocalModalOpen(true)}>
-            How to run the app locally?
+            How to Run the App Locally
           </button>
         </div>
 
@@ -207,10 +219,6 @@ function App() {
           >
             Launch Demo
           </a>
-
-          <button className="run-locally-btn" onClick={() => setLocalModalOpen(true)}>
-            How to run the app locally?
-          </button>
         </div>
       </section>
 
