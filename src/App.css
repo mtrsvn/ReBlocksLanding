@@ -878,6 +878,7 @@ body {
   padding: 24px;
   overflow-y: auto;
   max-height: calc(90vh - 73px);
+  min-height: unset; /* Override standard modal min-height */
   background: var(--surface);
   display: flex;
   flex-direction: column;
@@ -954,6 +955,23 @@ body {
 .step-item {
   display: flex;
   gap: 16px;
+}
+
+@media (max-width: 580px) {
+  .local-modal-body {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+  .prereq-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .step-item {
+    gap: 12px;
+  }
+  .modal-overlay {
+    padding: 12px;
+  }
 }
 
 .step-number {
