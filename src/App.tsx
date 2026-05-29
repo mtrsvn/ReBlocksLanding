@@ -5,7 +5,17 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [diaryDropdownOpen, setDiaryDropdownOpen] = useState(false)
   const [mobileDiaryOpen, setMobileDiaryOpen] = useState(false)
+  const [localModalOpen, setLocalModalOpen] = useState(false)
+  const [copiedText, setCopiedText] = useState<string | null>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
+
+  const handleCopy = (text: string, id: string) => {
+    navigator.clipboard.writeText(text)
+    setCopiedText(id)
+    setTimeout(() => {
+      setCopiedText(null)
+    }, 2000)
+  }
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -153,6 +163,10 @@ function App() {
               Launch Demo
             </a>
           </div>
+
+          <button className="run-locally-btn" onClick={() => setLocalModalOpen(true)}>
+            How to run app locally?
+          </button>
         </div>
 
         {/* PHONE SCREENSHOTS */}
@@ -193,8 +207,128 @@ function App() {
           >
             Launch Demo
           </a>
+
+          <button className="run-locally-btn" onClick={() => setLocalModalOpen(true)}>
+            How to run app locally?
+          </button>
         </div>
       </section>
+
+      {/* LOCAL RUN TUTORIAL MODAL */}
+      {localModalOpen && (
+        <div className="modal-overlay" onClick={() => setLocalModalOpen(false)}>
+          <div className="modal-container local-modal-container" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <div className="modal-title-group">
+                <span className="modal-title">Running the Code Locally</span>
+              </div>
+              <button className="modal-close" onClick={() => setLocalModalOpen(false)} aria-label="Close modal">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L11 11M1 11L11 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <div className="modal-body local-modal-body">
+              <div className="tutorial-section">
+                <h4 className="tutorial-section-title">Prerequisites</h4>
+                <div className="prereq-grid">
+                  <div className="prereq-card">
+                    <div className="prereq-info">
+                      <div className="prereq-name">npm / yarn</div>
+                      <div className="prereq-desc">Package manager for JavaScript</div>
+                    </div>
+                  </div>
+                  <div className="prereq-card">
+                    <div className="prereq-info">
+                      <div className="prereq-name">Git</div>
+                      <div className="prereq-desc">Distributed version control system</div>
+                    </div>
+                  </div>
+                  <div className="prereq-card">
+                    <div className="prereq-info">
+                      <div className="prereq-name">Node.js</div>
+                      <div className="prereq-desc">JavaScript runtime environment</div>
+                    </div>
+                  </div>
+                  <div className="prereq-card">
+                    <div className="prereq-info">
+                      <div className="prereq-name">Expo Go App</div>
+                      <div className="prereq-desc">Client to run Expo projects</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="tutorial-section">
+                <h4 className="tutorial-section-title">Installation & Execution</h4>
+                
+                <div className="step-list">
+                  <div className="step-item">
+                    <div className="step-number">1</div>
+                    <div className="step-content">
+                      <div className="step-title">Clone the Repository</div>
+                      <p className="step-desc">Open your terminal and clone the ReBlocks project code.</p>
+                      <div className="code-block-wrapper">
+                        <pre><code>{`git clone https://github.com/mtrsvn/ReBlocks\ncd ReBlocks`}</code></pre>
+                        <button 
+                          className="copy-code-btn"
+                          onClick={() => handleCopy("git clone https://github.com/mtrsvn/ReBlocks\ncd ReBlocks", "clone")}
+                        >
+                          {copiedText === "clone" ? "Copied! ✓" : "Copy"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="step-item">
+                    <div className="step-number">2</div>
+                    <div className="step-content">
+                      <div className="step-title">Install Client Dependencies</div>
+                      <p className="step-desc">Install the required node packages for the project.</p>
+                      <div className="code-block-wrapper">
+                        <pre><code>npm install</code></pre>
+                        <button 
+                          className="copy-code-btn"
+                          onClick={() => handleCopy("npm install", "install")}
+                        >
+                          {copiedText === "install" ? "Copied! ✓" : "Copy"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="step-item">
+                    <div className="step-number">3</div>
+                    <div className="step-content">
+                      <div className="step-title">Start the Expo Development Server</div>
+                      <p className="step-desc">Launch the development server to run React Native.</p>
+                      <div className="code-block-wrapper">
+                        <pre><code>npx expo start</code></pre>
+                        <button 
+                          className="copy-code-btn"
+                          onClick={() => handleCopy("npx expo start", "start")}
+                        >
+                          {copiedText === "start" ? "Copied! ✓" : "Copy"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="step-item">
+                    <div className="step-number">4</div>
+                    <div className="step-content">
+                      <div className="step-title">Scan and Run</div>
+                      <p className="step-desc">
+                        Scan the QR code displayed in your terminal using your physical device's camera to load the application instantly.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
