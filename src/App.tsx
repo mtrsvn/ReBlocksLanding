@@ -344,7 +344,7 @@ function App() {
 
           <p
             className="hero-subtitle text-content"
-            style={{ fontSize: "18px", maxWidth: "520px", lineHeight: "1.6" }}
+            style={{ maxWidth: "520px", lineHeight: "1.6" }}
           >
             A Layer-2 remittance protocol built on Morph Network for overseas
             workers and freelancers. Bypassing legacy banking rails to deliver
